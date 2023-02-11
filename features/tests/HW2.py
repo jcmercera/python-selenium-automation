@@ -8,7 +8,7 @@ service = Service('/Users/svetlanalevinsohn/JobEasy/13-python-selenium-automatio
 driver = webdriver.Chrome(service=service)
 
 
-# Create xPATH
+# Create xPATH.
 #driver.find_element(By.XPATH, "//i[@aria-label='Amazon']")
 #driver.find_element(By.ID, 'ap_email')
 #driver.find_element(By.XPATH, "//input[@aria-labelledby='continue-announce']")
