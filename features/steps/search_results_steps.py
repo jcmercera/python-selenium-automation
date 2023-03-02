@@ -1,6 +1,10 @@
+from selenium import webdriver
 from selenium.webdriver.common.by import By
-from behave import when, then
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
+from behave import given, when, then
 
 
 PRODUCT_PRICE = (By. CSS_SELECTOR, "span.a-price")
