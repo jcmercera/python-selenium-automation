@@ -1,5 +1,7 @@
 from selenium.webdriver.common.by import By
-from behave import given, when, then
+from selenium.webdriver.support import expected_conditions as EC
+
+from behave import when, given, then
 from time import sleep
 
 

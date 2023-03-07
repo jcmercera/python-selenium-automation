@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 # init driver
 driver = webdriver.Chrome(executable_path='/Users/JeiM/Documents/Automation/python-selenium-automation/chromedriver')
 driver.maximize_window()
+driver.wait = WebDriverWait(driver, 10)
 
 # open the url
 driver.get('https://www.google.com/')
