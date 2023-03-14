@@ -15,3 +15,24 @@ class ProductPage(Page):
 
     def add_to_cart(self, *locator):
         self.driver.click(*self.ADD_TO_CART_BTN)
+
+    def open_product_page(self, product_id):
+        self.driver.get(f'https://www.amazon.com/dp/{product_id}')
+
+    def verify_user_can_select_product_colors(self, *locator):
+        self.find_element(*self.COLOR_OPTIONS).click()
+        all_color_options = self.driver.find_elements(*self.COLOR_OPTIONS)
+        print('All colors:', all_color_options)
+        expected_colors = (
+            'Black', 'Bluestone', 'Brite Lime', 'Brite Orange', 'Carbon Heather', 'Carhartt Brown', 'Desert',
+            'Fire Red Heather', 'Heather Gray', 'Jade Heather', 'Lakeshore', 'Malachite', 'Marine Blue Heather',
+            'Moonstone Nep', 'Navy', 'North Woods Heather', 'Oiled Walnut Heather', 'Pale Apricot Nep', 'Port',
+            'Sundance Heather', 'Terracotta', 'White')
+
+        actual_colors = []
+        for color in all_color_options:
+            color.click()
+            current_color = self.driver.find_element(*self.CURRENT_COLOR).text
+            print('Current color:', current_color)
+            actual_colors += [current_color]
+            assert expected_colors == actual_colors, f'Expected {expected_colors}, but got {actual_colors}'

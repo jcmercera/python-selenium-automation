@@ -5,7 +5,7 @@ from selenium import webdriver
 
 @given('Open Amazon page')
 def open_amazon(context):
-    context.app.main_page.open_main()
+    context.app.main_page.open_main_url()
 
 
 @given('Open Amazon bestsellers page')
@@ -20,7 +20,7 @@ def click_on_cart_icon(context):
 
 @when('Click Amazon Orders link')
 def click_amazon_orders_link(context):
-    context.app.main_page.find_element(*ORDERS_LINK)
+    context.app.main_page.open_orders_icon()
 
 
 @when('Input text {search_word}')

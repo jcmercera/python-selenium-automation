@@ -49,3 +49,17 @@ class Page:
 
     def verify_url_contains_query(self, query):
         self.wait.until(EC.url_contains(query))
+
+    def store_original_window(self):
+        self.original_window = self.driver.current_window_handle
+
+    def switch_to_new_window(self):
+        self.driver.wait.until(EC.new_window_is_opened)
+        self.windows = self.driver.window_handles
+        self.driver.switch_to.window(self.windows[1])
+
+    def close_new_window(self):
+        self.driver.close()
+
+    def switch_back_to_original_window(self):
+        self.driver.switch_to.window(self.original_window)

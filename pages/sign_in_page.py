@@ -5,5 +5,10 @@ from pages.base_page import Page
 
 
 class SignInPage(Page):
-    def sign_in_page_open(self, query):
-        self.driver.main.verify_url_query('www.amazon.com/ap/signin?')
+    EMAIL_INPUT_FIELD = (By.ID, 'ap_email')
+
+    def sign_in_page_open(self):
+        self.wait.until(EC.url_contains('www.amazon.com/ap/signin?'))
+
+    def verify_email_input(self, *locator):
+        assert self.driver.find_element(*self.EMAIL_INPUT_FIELD), 'Email field not shown'

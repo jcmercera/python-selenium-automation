@@ -5,6 +5,7 @@ from pages.terms_and_conditions_page import TermsAndConditions
 from pages.cart_page import CartPage
 from pages.product_page_page import ProductPage
 from pages.sign_in_page import SignInPage
+from pages.footer import Footer
 
 
 class Application:
@@ -18,8 +19,5 @@ class Application:
         self.cart_page = CartPage(self.driver)
         self.product_page_page = ProductPage(self.driver)
         self.sign_in_page = SignInPage(self.driver)
+        self.footer = Footer(self.driver)
 
-
-app = Application('driver')
-# app.main_page.open_main()
-# app.header.find_element()

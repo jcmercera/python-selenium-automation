@@ -14,33 +14,29 @@ def open_t_and_c_page(context):
 
 @when('Store original window')
 def store_original_window(context):
-    context.original_window = context.driver.current_window_handle
+    context.app.terms_and_conditions_page.store_t_c_page()
 
 
 @when('Click on Amazon Privacy Notice link')
 def click_privacy_notice_link(context):
-    context.driver.find_element(*PRIVACY_NOTICE).click()
+    context.app.terms_and_conditions_page.click_privacy_notice_link()
 
 
 @when('Switch to the newly opened window')
 def switch_to_new_window(context):
-    context.driver.wait.until(EC.new_window_is_opened)
-    context.windows = context.driver.window_handles
-    context.driver.switch_to.window(context.windows[1])
+    context.app.terms_and_conditions_page.switch_to_new_t_c_window()
 
 
 @then('Verify Amazon Privacy Notice page is opened')
 def verify_privacy_notice_page_open(context):
-    context.driver.wait.until(EC.url_contains('https://www.amazon.com/gp/help/customer/display.html'))
-
-    assert '/gp/help/customer/display.html' in context.driver.current_url, f'URL: {context.driver.current_url} does not contain the query'
+    context.app.terms_and_conditions_page.verify_privacy_notice_page_open()
 
 
 @then('User can close new window')
 def close_new_window(context):
-    context.driver.close()
+    context.app.main_page.close_new_window()
 
 
 @then('Switch back to original')
 def switch_back_to_original_window(context):
-    context.driver.switch_to.window(context.original_window)
+    context.app.main_page.switch_back_to_original_window()

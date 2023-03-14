@@ -1,5 +1,5 @@
 # Created by JeiM at 3/12/23
-Feature: Sign in page
+Feature: Amazon page
   # Enter feature description here
 
  Scenario: Logged out user sees Sign in page when clicking Orders

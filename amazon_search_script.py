@@ -4,13 +4,13 @@ from time import sleep
 from selenium.webdriver.chrome.service import Service
 
 # driver = webdriver.Chrome(executable_path='/Users/svetlanalevinsohn/JobEasy/13-python-selenium-automation/chromedriver')
-service = Service('/Users/svetlanalevinsohn/JobEasy/13-python-selenium-automation/chromedriver')
+service = Service('./chromedriver')
 driver = webdriver.Chrome(service=service)
 
 driver.get('https://www.amazon.com/')
 
-driver.find_element(By.ID, 'twotabsearchtextbox').send_keys('table')
-driver.find_element(By.ID, 'nav-search-submit-button').click()
+driver.find_element(By.ID, '#twotabsearchtextbox').send_keys('table')
+driver.find_element(By.ID, '#nav-search-submit-button').click()
 
 expected_result = '"table"'
 actual_result = driver.find_element(By.XPATH, "//span[@class='a-color-state a-text-bold']").text
