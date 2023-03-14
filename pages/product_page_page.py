@@ -14,7 +14,7 @@ class ProductPage(Page):
     THUMBNAIL_IMG = (By.CSS_SELECTOR, '#altImages input.a-button-input')
 
     def add_to_cart(self, *locator):
-        self.driver.click(*self.ADD_TO_CART_BTN)
+        self.click(*self.ADD_TO_CART_BTN)
 
     def open_product_page(self, product_id):
         self.driver.get(f'https://www.amazon.com/dp/{product_id}')

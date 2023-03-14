@@ -16,12 +16,11 @@ def verify_cart_count(context, expected_count):
     context.app.cart_page.verify_cart_count()
 
 
-@then('Product results for dress are shown')
-def product_results_shown(context):
-    context.app.cart_page.product_results_shown()
+@then('Product is added to the cart')
+def product_is_added_to_cart(context):
+    context.app.cart_page.verify_cart_count('1')
 
 
 @then('Verify "Your Shopping Cart is empty." text present')
-def cart_empty(context):
-    context.app.cart_page.empty_cart()
-
+def verify_empty_cart(context):
+    context.app.cart_page.verify_empty_cart()

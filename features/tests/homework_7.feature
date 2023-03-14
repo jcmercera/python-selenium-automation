@@ -16,9 +16,8 @@ Scenario: 'Your Shopping Cart is empty' shown if no product added
 
  Scenario: User is able to add object to cart
   Given Open Amazon page
-  When Input text dress
+  When Input text table
   And Click on search button
   And Click on the first product
   And Click on Add to cart button
-  And click on cart icon
-  Then Product results for dress are shown
+  Then Product is added to the cart

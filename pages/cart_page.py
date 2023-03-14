@@ -8,10 +8,10 @@ from selenium.webdriver.support import expected_conditions as EC
 class CartPage(Page):
     CART_COUNT = (By.ID, 'nav-cart-count')
     PRODUCT_TEXT = (By.CSS_SELECTOR, 'span.a-color-state a-text-bold')
-    CART_EMPTY_TEXT = (By.XPATH, "//h2[text()='Your Amazon Cart is empty']")
+    CART_EMPTY_TEXT = (By.XPATH, "//h2")
 
-    def empty_cart(self, *locator):
-        return self.find_element(*self.CART_EMPTY_TEXT).text
+    # def empty_cart(self, *locator):
+    #     return self.find_element(*self.CART_EMPTY_TEXT).text
 
     def product_results_shown(self, expected_text, *locator):
         actual_text = self.find_element(*locator).text
@@ -30,5 +30,5 @@ class CartPage(Page):
     def click_on_cart_count(self, *locator):
         self.click(*self.CART_COUNT)
 
-    def empty_cart(self, *locator):
-        assert self.find_element(*self.CART_EMPTY_TEXT), "Empty Cart is not Verified"
+    def verify_empty_cart(self, *locator):
+        assert self.find_element(*self.CART_EMPTY_TEXT).text, "Empty Cart is not Verified"

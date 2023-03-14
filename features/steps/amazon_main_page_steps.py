@@ -15,16 +15,16 @@ def open_amazon_bestsellers(context):
 
 @when('Click on cart icon')
 def click_on_cart_icon(context):
-    context.app.main_page.find_element(*CART_ICON).click()
+    context.app.header.click_cart_icon()
 
 
 @when('Click Amazon Orders link')
 def click_amazon_orders_link(context):
-    context.app.main_page.open_orders_icon()
+    context.app.header.open_orders_icon()
 
 
 @when('Input text {search_word}')
-def input_search_word(context, search_word):
+def input_search_text(context, search_word):
     context.app.header.input_search_text(search_word)
 
 
