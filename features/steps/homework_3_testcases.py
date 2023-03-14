@@ -5,9 +5,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 
-@given('Open Amazon page')
-def open_amazon(context):
-    context.driver.get('https://www.amazon.com/')
+
+
+
+# @given('Open Amazon page')
+# def open_amazon(context):
+#     context.driver.get('https://www.amazon.com/')
 
 
 @when('Click on Orders icon')

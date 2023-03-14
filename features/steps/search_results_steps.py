@@ -1,15 +1,13 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from time import sleep
 from behave import given, when, then
-
-
-PRODUCT_PRICE = (By. CSS_SELECTOR, "span.a-price")
+from app.application import Application
 
 
 @when('Click on the first product')
 def click_first_product(context):
-    context.driver.find_element(*PRODUCT_PRICE).click()
+    context.app.search_results_page.click_on_first_product()
+
+
+@then('Verify that text {expected_result} is shown')
+def verify_search_result(context, expected_result):
+    context.app.search_results_page.verify_search_results()
