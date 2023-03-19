@@ -3,6 +3,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 from behave import given, when, then
 from pages.base_page import Page
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import Select
 
 
 class ProductPage(Page):
@@ -12,6 +14,8 @@ class ProductPage(Page):
     COLOR_OPTIONS = (By.CSS_SELECTOR, "#variation_color_name li")
     CURRENT_COLOR = (By.CSS_SELECTOR, "#variation_color_name .selection")
     THUMBNAIL_IMG = (By.CSS_SELECTOR, '#altImages input.a-button-input')
+    NEW_ARRIVALS = (By.XPATH, "//*[contains(@href, 'New-Arrivals') and @class='nav-a nav-hasArrow']")
+    NEW_ARRIVALS_DEALS = (By.ID, 'nav-flyout-aj:https://m.media-amazon.com/images/G/01/Softlines/Store/MegaMenu/megamenucreator_removeps_en_US.json:subnav-sl-megamenu-8:0')
 
     def add_to_cart(self, *locator):
         self.click(*self.ADD_TO_CART_BTN)
@@ -36,3 +40,12 @@ class ProductPage(Page):
             print('Current color:', current_color)
             actual_colors += [current_color]
             assert expected_colors == actual_colors, f'Expected {expected_colors}, but got {actual_colors}'
+
+    def hover_over_new_arrivals(self):
+        new_arrivals = self.find_element(*self.NEW_ARRIVALS)
+        actions = ActionChains(self.driver)
+        actions.move_to_element(new_arrivals)
+        actions.perform()
+
+    def verify_new_arrivals_deals_shown(self):
+        self.wait_for_element_appear(*self.NEW_ARRIVALS_DEALS)

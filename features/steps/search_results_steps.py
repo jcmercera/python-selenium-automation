@@ -10,4 +10,9 @@ def click_first_product(context):
 
 @then('Verify that text {expected_result} is shown')
 def verify_search_result(context, expected_result):
-    context.app.search_results_page.verify_search_results()
+    context.app.search_results_page.verify_search_results(expected_result)
+
+
+@then('Verify {category} department is selected')
+def verify_product_dept_selected(context, category):
+    context.app.search_results_page.verify_product_dept_selected(category)

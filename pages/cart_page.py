@@ -3,8 +3,8 @@ from behave import given, when, then
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
-
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import Select
 class CartPage(Page):
     CART_COUNT = (By.ID, 'nav-cart-count')
     PRODUCT_TEXT = (By.CSS_SELECTOR, 'span.a-color-state a-text-bold')

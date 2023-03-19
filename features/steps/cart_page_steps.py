@@ -13,7 +13,7 @@ def open_the_cart_page(context):
 
 @then('Verify if cart has {expected_count} item(s)')
 def verify_cart_count(context, expected_count):
-    context.app.cart_page.verify_cart_count()
+    context.app.cart_page.verify_cart_count(expected_count)
 
 
 @then('Product is added to the cart')

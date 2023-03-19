@@ -33,6 +33,21 @@ def click_search(context):
     context.app.header.click_search()
 
 
+@when('Hover over language options')
+def hover_language_options(context):
+    context.app.header.hover_language_options()
+
+
+@when('Select department by alias {alias}')
+def select_department(context, alias):
+    context.app.header.select_department(alias)
+
+
 @then('Verify that the bestseller banner has {expected_amount} links')
 def verify_bestseller_link_count(context, expected_amount):
-    context.app.search_results_page.banner_link_amount()
+    context.app.search_results_page.banner_link_amount(expected_amount)
+
+
+@then('Verify Spanish option present')
+def verify_spanish_option_present(context):
+    context.app.header.verify_spanish_option_present()
